@@ -1,0 +1,4 @@
+static
+media
+conf.settings_local.py
+.env

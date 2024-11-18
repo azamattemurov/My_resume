@@ -9,9 +9,10 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-from distutils.command.config import config
+
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,10 +27,9 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['*']
-AUTH_USER_MODEL = 'resume.Song'
 
 # Application definition
 
@@ -84,10 +84,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': config('DB_NAME'),
-        'PORT': config('DB_PORT'),
-        'PASSWORD': config('DB_PASSWORD'),
         'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
         'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
     }
 }
 
@@ -144,11 +144,10 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config('EMAIL_HOST')  # Your Gmail address
 EMAIL_HOST_PASSWORD = config('EMAIL_PASS')  # Your Gmail password or App Password if 2-step verification is enabled
 
-DEFAULT_FROM_EMAIL = 'sotvoldiyevazamat193@gmail.com'
 
-
-# Tizimga kirish sahifasining URL manzili
-
-
+try:
+    from . import settings_local
+except ImportError:
+    pass
 
 
