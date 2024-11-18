@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+from distutils.command.config import config
 from pathlib import Path
 import os
 
@@ -23,12 +23,13 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!c41y(*7%3m84j$nk*b*t3u8z1w4h8+2ojpp+b(%+8^q0^1wz#'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+AUTH_USER_MODEL = 'resume.Song'
 
 # Application definition
 
@@ -81,8 +82,12 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DB_NAME'),
+        'PORT': config('DB_PORT'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'USER': config('DB_USER'),
     }
 }
 
@@ -136,12 +141,14 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587  # For TLS
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'sotvoldiyevazamat193@gmail.com'  # Your Gmail address
-EMAIL_HOST_PASSWORD = 'muvx siht enrr gcym'  # Your Gmail password or App Password if 2-step verification is enabled
+EMAIL_HOST_USER = config('EMAIL_HOST')  # Your Gmail address
+EMAIL_HOST_PASSWORD = config('EMAIL_PASS')  # Your Gmail password or App Password if 2-step verification is enabled
 
 DEFAULT_FROM_EMAIL = 'sotvoldiyevazamat193@gmail.com'
 
 
 # Tizimga kirish sahifasining URL manzili
+
+
 
 
