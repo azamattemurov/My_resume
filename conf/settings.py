@@ -145,9 +145,5 @@ EMAIL_HOST_USER = config('EMAIL_HOST')  # Your Gmail address
 EMAIL_HOST_PASSWORD = config('EMAIL_PASS')  # Your Gmail password or App Password if 2-step verification is enabled
 
 
-try:
-    from . import settings_local
-except ImportError:
-    pass
 
 
