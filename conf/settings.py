@@ -1,6 +1,5 @@
 from pathlib import Path
 import os
-from decouple import config
 
 
 
@@ -12,8 +11,8 @@ TEMPLATE = os.path.join(BASE_DIR, 'templates/')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 # Secret Key and Debug
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+SECRET_KEY = 'django-insecure-!c41y(*7%3m84j$nk*b*t3u8z1w4h8+2ojpp+b(%+8^q0^1wz#'
+DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -63,11 +62,11 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('DB_NAME'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
+        'NAME': 'myproject',
+        'HOST': 'localhost',
+        'PORT': '5432',
+        'USER': 'myproject',
+        'PASSWORD': 'myproject',
     }
 }
 
@@ -113,5 +112,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587  # For TLS
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = config('EMAIL_HOST')  # Your Gmail address
-EMAIL_HOST_PASSWORD = config('EMAIL_PASS')  # Your Gmail password or App Password
+EMAIL_HOST_USER = 'sotvoldiyevazamat193@gmail.com'  # Your Gmail address
+EMAIL_HOST_PASSWORD = 'muvx siht enrr gcym' # Your Gmail password or App Password
