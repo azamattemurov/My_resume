@@ -348,7 +348,7 @@ $(".navigation-content ul li a").hover(function(e) {
             type: 'progressbar',
           },
         mousewheel: true,
-        observer: true,  
+        observer: true,
         observeParents: true,
       });
   }
@@ -356,8 +356,11 @@ $(".navigation-content ul li a").hover(function(e) {
 
 
 
-  
- 
+
+
+
+
+
 
 
 

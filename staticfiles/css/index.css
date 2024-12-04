@@ -135,7 +135,7 @@ body{
     font-weight: 200;
     font-family: Josefin sans;
     font-weight: bolder;
-    background: url(../img/a.png); /*HEADER BACKGROUND IMAGE*/
+    background: url(../img/a.png);
     background-position: center;
     background-size: cover;
 }
@@ -879,9 +879,9 @@ SONGS ONE
     width: 100%;
     overflow: hidden;
     background: url(../img/music-bg.JPG);/*SONGS-ONE BACKGROUND IMAGE*/
-     background-position: center;
-     background-attachment: fixed;
-     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 #songs-one #songs-container .song{
